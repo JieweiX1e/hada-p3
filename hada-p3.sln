@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36915.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProWeb", "ProWeb\ProWeb.csproj", "{F819A001-7081-4C3F-9F41-7017258843CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "library", "library\library.csproj", "{325C3DE8-524E-4C0D-8A28-51FBE0C81963}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F819A001-7081-4C3F-9F41-7017258843CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F819A001-7081-4C3F-9F41-7017258843CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F819A001-7081-4C3F-9F41-7017258843CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{325C3DE8-524E-4C0D-8A28-51FBE0C81963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{325C3DE8-524E-4C0D-8A28-51FBE0C81963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{325C3DE8-524E-4C0D-8A28-51FBE0C81963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{325C3DE8-524E-4C0D-8A28-51FBE0C81963}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
