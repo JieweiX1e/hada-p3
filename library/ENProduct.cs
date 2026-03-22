@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace library
 {
-    internal class ENProducts
+    public class ENProduct
     {
+
     }
 }
