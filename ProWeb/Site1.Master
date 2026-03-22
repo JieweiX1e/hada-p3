@@ -11,8 +11,23 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        Vicente Manuel Ruiz de Lope Martínez - 55178369N
+        <div style="width:100%; 
+                    height:150px; 
+                    background-color:darkturquoise; 
+                    text-align:center; 
+                    line-height:150px">
+            <h1>
+                
+            <asp:Label ID="Algo" runat="server" Text="HADA P3 - CURSO 2025/26"
+                style="text-align:center;">
+            </asp:Label>
+
+
+            </h1>
+        </div>
         <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            <asp:ContentPlaceHolder ID="cph1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
     </form>
