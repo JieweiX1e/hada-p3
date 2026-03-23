@@ -8,16 +8,41 @@
             Code    
             <asp:TextBox ContentPlaceHolderID="cph1" ID="TB_Code" runat="server">
             </asp:TextBox>
+            <asp:RegularExpressionValidator ID="CodeValidator" 
+                                            runat="server" 
+                                            ControlToValidate="TB_Code" 
+                                            ErrorMessage="Enter a valid code"
+                                            ForeColor="Red"
+                                            Display="Static"
+                                            ValidationGroup="formGroup"
+                                            ValidationExpression="^([\S\s]{1,16})" />
         </p>
         <p>
             Name    
             <asp:TextBox ContentPlaceHolderID="cph1" ID="TB_Name" runat="server">
             </asp:TextBox>
+            <asp:RegularExpressionValidator ID="RequiredFieldValidator1" 
+                            runat="server" 
+                            ControlToValidate="TB_Name" 
+                            ErrorMessage="Enter a valid name"
+                            Display="Static"
+                            ForeColor="Red"
+                            ValidationGroup="formGroup"
+                            ValidationExpression="^([\S\s]{0,32})"/>
         </p>
         <p>
             Amount  
             <asp:TextBox ContentPlaceHolderID="cph1" ID="TB_Amount" runat="server">
             </asp:TextBox>
+            <asp:RangeValidator id="Range1"
+                                ControlToValidate="TB_Amount"
+                                MinimumValue="0"
+                                MaximumValue="9999"
+                                Type="Integer"
+                                ForeColor="Red"
+                                EnableClientScript="false"
+                                Text="The value must be from 0 to 9999"
+                                runat="server"/>
         </p>
         <p>
             Category
@@ -33,11 +58,23 @@
             Price 
             <asp:TextBox ContentPlaceHolderID="cph1" ID="TB_Price" runat="server">
             </asp:TextBox>
+            <asp:RangeValidator id="RangeValidator1"
+                    ControlToValidate="TB_Price"
+                    MinimumValue="0"
+                    MaximumValue="9999,99"
+                    Type="Currency"
+                    EnableClientScript="false"
+                    ForeColor="Red"
+                    Text="The value must be from 0.00 to 9999.99"
+                    runat="server"/>
         </p>
         <p>
             Creation date  
-            <asp:TextBox ContentPlaceHolderID="cph1" ID="TextBox2" runat="server">
+            <asp:TextBox ContentPlaceHolderID="cph1" ID="Date" runat="server">
             </asp:TextBox>
+            <asp:CustomValidator ID="DateValidator"
+                                 ControlToValidate="Date"
+                                 runat="server"/>
         </p>
     </div>
     <div style="width:100%;

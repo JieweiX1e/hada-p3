@@ -22,6 +22,15 @@ namespace ProWeb {
         protected global::System.Web.UI.WebControls.TextBox TB_Code;
 
         /// <summary>
+        /// Control CodeValidator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator CodeValidator;
+
+        /// <summary>
         /// Control TB_Name.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace ProWeb {
         protected global::System.Web.UI.WebControls.TextBox TB_Name;
 
         /// <summary>
+        /// Control RequiredFieldValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RequiredFieldValidator1;
+
+        /// <summary>
         /// Control TB_Amount.
         /// </summary>
         /// <remarks>
@@ -38,6 +56,15 @@ namespace ProWeb {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TB_Amount;
+
+        /// <summary>
+        /// Control Range1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator Range1;
 
         /// <summary>
         /// Control DDL_Category.
@@ -58,12 +85,30 @@ namespace ProWeb {
         protected global::System.Web.UI.WebControls.TextBox TB_Price;
 
         /// <summary>
-        /// Control TextBox2.
+        /// Control RangeValidator1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator1;
+
+        /// <summary>
+        /// Control Date.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Date;
+
+        /// <summary>
+        /// Control DateValidator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator DateValidator;
     }
 }
