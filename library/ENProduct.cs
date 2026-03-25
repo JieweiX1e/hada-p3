@@ -80,23 +80,21 @@ namespace library
         }
 
 
-        public bool ReadFirst() { 
-           
-        
+        public bool ReadFirst() {
+            CADProduct c = new CADProduct();
+            return c.ReadFirst(this);
         }
 
 
-        public bool ReadNext() { 
-        
-        
-        
+        public bool ReadNext() {
+            CADProduct c = new CADProduct();
+            return c.ReadNext(this);
         }
 
 
-        public bool ReadPrev() { 
-        
-        
-        
+        public bool ReadPrev() {
+            CADProduct c = new CADProduct();
+            return c.ReadPrev(this);
         }
 
     }

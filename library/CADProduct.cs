@@ -13,9 +13,17 @@ namespace library
         public CADProduct() {
             constring = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database.mdf;Integrated Security=True";
         }
+      
 
         public bool Create(ENProduct en) {
             bool created = false;
+
+            // mirar si existe en la base de datos
+            if (Read(en)) {
+                Console.WriteLine("The product already exists in the database.");
+                return false;
+            }
+
 
             SqlConnection con = null;
             string ins = "INSERT INTO Products values(" +
@@ -115,17 +123,14 @@ namespace library
                 
                 SqlDataReader r = cmd.ExecuteReader();
 
-                if (r.Read()) {
+                en.Code = r["code"].ToString();
+                en.Name = r["name"].ToString();
+                en.Amount = Convert.ToInt16(r["amount"]);
+                en.Price = Convert.ToSingle(r["price"]);
+                en.Category = Convert.ToInt16(r["category"]);
+                en.CreationDate = Convert.ToDateTime(r["date"]);
 
-                    en.Name = r["name"].ToString();
-                    en.Amount = Convert.ToInt32(r["amount"]);
-                    en.Price = Convert.ToSingle(r["price"]);
-                    en.Category = Convert.ToInt32(r["category"]);
-                    en.CreationDate = Convert.ToDateTime(r["date"]);
 
-                    found = true;
-                
-                }
             }
             catch (SqlException ex)
             {
@@ -142,12 +147,80 @@ namespace library
 
         }
 
-        public bool ReadFirst(ENProduct en) { 
-        
+        public bool ReadFirst(ENProduct en) {
+            bool found = false;
+
+            SqlConnection con = null;
+            string ins = "SELECT TOP 1 * FROM Products";
+
+            try
+            {
+                con = new SqlConnection(constring);
+                con.Open();
+                SqlCommand cmd = new SqlCommand(ins, con);
+
+                SqlDataReader r = cmd.ExecuteReader();
+
+                en.Code = r["code"].ToString();
+                en.Name = r["name"].ToString();
+                en.Amount = Convert.ToInt16(r["amount"]);
+                en.Price = Convert.ToSingle(r["price"]);
+                en.Category = Convert.ToInt16(r["category"]);
+                en.CreationDate = Convert.ToDateTime(r["date"]);
+
+
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Error when trying to Read: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (con != null) con.Close();
+            }
+
+
+            return found;
         }
 
-        public bool ReadNext(ENProduct en) { 
-        
+        public bool ReadNext(ENProduct en) {
+            bool found = false;
+
+            SqlConnection con = null;
+
+            string ins = "SELECT TOP 1 * FROM Products";
+
+            try
+            {
+                con = new SqlConnection(constring);
+                con.Open();
+                SqlCommand cmd = new SqlCommand(ins, con);
+
+                SqlDataReader r = cmd.ExecuteReader();
+
+                en.Code = r["code"].ToString();
+                en.Name = r["name"].ToString();
+                en.Amount = Convert.ToInt16(r["amount"]);
+                en.Price = Convert.ToSingle(r["price"]);
+                en.Category = Convert.ToInt16(r["category"]);
+                en.CreationDate = Convert.ToDateTime(r["date"]);
+
+
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Error when trying to Read: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (con != null) con.Close();
+            }
+
+
+            return found;
+
         }
 
         public bool ReadPrev(ENProduct en) { 
