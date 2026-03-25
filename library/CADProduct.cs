@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +11,30 @@ namespace library
     {
         private string constring;
         public CADProduct() {
-            constring = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security=True";
+            constring = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database.mdf;Integrated Security=True";
         }
 
-        public bool Create(ENProduct en) { 
-            
+        public bool Create(ENProduct en) {
+            bool created = false;
+
+            SqlConnection con = null;
+            string ins = "INSERT INTO Products values(" +
+                    en.Name + "," + en.Code + "," + en.Amount + "," + en.Price + "," + en.Category + ","
+                    + en.CreationDate + ")";
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(ins, con);
+                cmd.ExecuteNonQuery();
+                created = true;
+            }
+            catch (SqlException ex) {
+                Console.WriteLine("Error in when trying to execute Create: " + ex.Message);
+                return false;
+            }
+
+            return created; ;
+
         }
 
         public bool Update(ENProduct en) { 
