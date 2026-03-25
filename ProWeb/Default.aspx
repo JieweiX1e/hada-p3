@@ -89,11 +89,11 @@
     <div style="width:100%;
                 padding:10px;">
         <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="Create" Text="Create" onClick="CreateButton_onClick" />
-        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="Update" Text="Update" />
-        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="Delete" Text="Delete" />
-        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="Read" Text="Read" />
-        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="Read1" Text="Read First" />
-        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="ReadP" Text="Read Prev" />
-        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="ReadN" Text="Read Next" />
+        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="Update" Text="Update" onClick="UpdateButton_onClick" />
+        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="Delete" Text="Delete" onClick="DeleteButton_onClick" />
+        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="Read" Text="Read" onClick="ReadButton_onClick" />
+        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="Read1" Text="Read First" onClick="ReadFirstButton_onClick" />
+        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="ReadP" Text="Read Prev" onClick="ReadPrevButton_onClick" />
+        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="ReadN" Text="Read Next" onClick="ReadNextButton_onClick" />
     </div>
 </asp:Content>
