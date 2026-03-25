@@ -26,20 +26,32 @@ namespace library
 
 
             SqlConnection con = null;
-            string ins = "INSERT INTO Products values(" +
-                    en.Name + "," + en.Code + "," + en.Amount + "," + en.Price + "," + en.Category + ","
-                    + en.CreationDate + ")";
+            string ins = "INSERT INTO Products (code, name, amount, price, category, creationDate) VALUES (@code, @name, @amount, @price, @category, @date)";
+
+
             try
             {
                 con = new SqlConnection(constring);
                 con.Open();
+
                 SqlCommand cmd = new SqlCommand(ins, con);
+                cmd.Parameters.AddWithValue("@code", en.Code);
+                cmd.Parameters.AddWithValue("@name", en.Name);
+                cmd.Parameters.AddWithValue("@amount", en.Amount);
+                cmd.Parameters.AddWithValue("@price", en.Price);
+                cmd.Parameters.AddWithValue("@category", en.Category);
+                cmd.Parameters.AddWithValue("@date", en.CreationDate);
+
                 cmd.ExecuteNonQuery();
                 created = true;
             }
             catch (SqlException ex) {
                 Console.WriteLine("Error when trying to execute Create: " + ex.Message);
                 return false;
+            }
+            finally
+            {
+                if (con != null) con.Close();
             }
 
             return created; ;
@@ -50,19 +62,20 @@ namespace library
             bool changed = false;
 
             SqlConnection con = null;
-            string ins = "UPDATE Products SET " 
-               + "name = " + en.Name + ", "
-               + "amount = " + en.Amount + ", "
-               + "price = " + en.Price + ", "
-               + "category = " + en.Category + ", "
-               + "creationDate = " + en.CreationDate + ", "
-                + "WHERE code = " + en.Code;
+            string ins = "UPDATE Products SET name=@name, amount=@amount, price=@price, category=@category, creationDate=@creationDate WHERE code=@code";
 
             try
             {
                 con = new SqlConnection(constring);
                 con.Open();
                 SqlCommand cmd = new SqlCommand(ins, con);
+                cmd.Parameters.AddWithValue("@code", en.Code);
+                cmd.Parameters.AddWithValue("@name", en.Name);
+                cmd.Parameters.AddWithValue("@amount", en.Amount);
+                cmd.Parameters.AddWithValue("@price", en.Price);
+                cmd.Parameters.AddWithValue("@category", en.Category);
+                cmd.Parameters.AddWithValue("@date", en.CreationDate);
+
                 cmd.ExecuteNonQuery();
                 changed = true;
             }
@@ -83,15 +96,16 @@ namespace library
             bool deleted = false;
 
             SqlConnection con = null;
-            string ins = "DELETE FROM Products "
-                + "WHERE code = " + en.Code;
+            string ins = "DELETE FROM Products WHERE code = @code";
 
             try
             {
                 con = new SqlConnection(constring);
                 con.Open();
                 SqlCommand cmd = new SqlCommand(ins, con);
+                cmd.Parameters.AddWithValue("@code", en.Code);
                 cmd.ExecuteNonQuery();
+
                 deleted = true;
             }
             catch (SqlException ex)
@@ -112,25 +126,27 @@ namespace library
             bool found = false;
 
             SqlConnection con = null;
-            string ins = "SELECT * FROM Products "
-                + "WHERE code = " + "'" + en.Code + "'";
+            string ins = "SELECT * FROM Products WHERE code = @code";
 
             try
             {
                 con = new SqlConnection(constring);
                 con.Open();
                 SqlCommand cmd = new SqlCommand(ins, con);
-                
+                cmd.Parameters.AddWithValue("@code", en.Code);
                 SqlDataReader r = cmd.ExecuteReader();
 
-                en.Code = r["code"].ToString();
-                en.Name = r["name"].ToString();
-                en.Amount = Convert.ToInt16(r["amount"]);
-                en.Price = Convert.ToSingle(r["price"]);
-                en.Category = Convert.ToInt16(r["category"]);
-                en.CreationDate = Convert.ToDateTime(r["date"]);
+                if (r.Read())
+                {
+                    en.Code = r["code"].ToString();
+                    en.Name = r["name"].ToString();
+                    en.Amount = Convert.ToInt16(r["amount"]);
+                    en.Price = Convert.ToSingle(r["price"]);
+                    en.Category = Convert.ToInt16(r["category"]);
+                    en.CreationDate = Convert.ToDateTime(r["creationDate"]);
 
-
+                    found = true;
+                }
             }
             catch (SqlException ex)
             {
@@ -160,15 +176,16 @@ namespace library
                 SqlCommand cmd = new SqlCommand(ins, con);
 
                 SqlDataReader r = cmd.ExecuteReader();
+                if (r.Read()) { 
+                    en.Code = r["code"].ToString();
+                    en.Name = r["name"].ToString();
+                    en.Amount = Convert.ToInt16(r["amount"]);
+                    en.Price = Convert.ToSingle(r["price"]);
+                    en.Category = Convert.ToInt16(r["category"]);
+                    en.CreationDate = Convert.ToDateTime(r["creationDate"]);
 
-                en.Code = r["code"].ToString();
-                en.Name = r["name"].ToString();
-                en.Amount = Convert.ToInt16(r["amount"]);
-                en.Price = Convert.ToSingle(r["price"]);
-                en.Category = Convert.ToInt16(r["category"]);
-                en.CreationDate = Convert.ToDateTime(r["date"]);
-
-
+                    found = true;    
+                }
             }
             catch (SqlException ex)
             {
@@ -189,23 +206,27 @@ namespace library
 
             SqlConnection con = null;
 
-            string ins = "SELECT TOP 1 * FROM Products";
+            string ins = "SELECT TOP 1 * FROM Products WHERE id > (SELECT id FROM Products where code=@code)  ORDER BY id asc";
 
             try
             {
                 con = new SqlConnection(constring);
                 con.Open();
                 SqlCommand cmd = new SqlCommand(ins, con);
-
+                cmd.Parameters.AddWithValue("@code", en.Code);
                 SqlDataReader r = cmd.ExecuteReader();
 
-                en.Code = r["code"].ToString();
-                en.Name = r["name"].ToString();
-                en.Amount = Convert.ToInt16(r["amount"]);
-                en.Price = Convert.ToSingle(r["price"]);
-                en.Category = Convert.ToInt16(r["category"]);
-                en.CreationDate = Convert.ToDateTime(r["date"]);
+                if (r.Read())
+                {
+                    en.Code = r["code"].ToString();
+                    en.Name = r["name"].ToString();
+                    en.Amount = Convert.ToInt16(r["amount"]);
+                    en.Price = Convert.ToSingle(r["price"]);
+                    en.Category = Convert.ToInt16(r["category"]);
+                    en.CreationDate = Convert.ToDateTime(r["creationDate"]);
 
+                    found = true;
+                }
 
             }
             catch (SqlException ex)
@@ -223,9 +244,46 @@ namespace library
 
         }
 
-        public bool ReadPrev(ENProduct en) { 
-        
-        
+        public bool ReadPrev(ENProduct en) {
+            bool found = false;
+
+            SqlConnection con = null;
+
+            string ins = "SELECT TOP 1 * FROM Products WHERE id < (SELECT id FROM Products where code=@code)  ORDER BY id desc";
+
+            try
+            {
+                con = new SqlConnection(constring);
+                con.Open();
+                SqlCommand cmd = new SqlCommand(ins, con);
+                cmd.Parameters.AddWithValue("@code", en.Code);
+                SqlDataReader r = cmd.ExecuteReader();
+
+                if (r.Read())
+                {
+                    en.Code = r["code"].ToString();
+                    en.Name = r["name"].ToString();
+                    en.Amount = Convert.ToInt16(r["amount"]);
+                    en.Price = Convert.ToSingle(r["price"]);
+                    en.Category = Convert.ToInt16(r["category"]);
+                    en.CreationDate = Convert.ToDateTime(r["creationDate"]);
+
+                    found = true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Error when trying to Read: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (con != null) con.Close();
+            }
+
+
+            return found;
+
         }
 
 
