@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace library
 {
-    public class CADProduct
+    internal class CADProduct
     {
         private string constring;
         public CADProduct() {

@@ -8,10 +8,22 @@ namespace library
 {
     public class ENCategory
     {
-        private string _category;
+        private string _name;
+        public string Name { get; set; }
 
-        public ENCategory() { }
+        public ENCategory() { 
+        
+        }
 
-        public string Category { get { return _category; } }
+        public bool read() { 
+            CADCategory c = new CADCategory();
+            return c.read(this);
+        }
+
+        public List<ENCategory> readAll() {
+            CADCategory c = new CADCategory();
+            return c.readAll();
+        }
+
     }
 }
