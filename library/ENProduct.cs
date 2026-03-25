@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace library
 {
     public class ENProduct
@@ -46,41 +47,41 @@ namespace library
 
         public ENProduct() { 
 
-
         }
 
         public ENProduct(string code, string name, int amount, float price, int category, DateTime creationDate){
-
+            Code = code;
+            Name = name;
+            Amount = amount;
+            Price = price;
+            Category = category;
+            CreationDate = creationDate;    
         }
 
-        public bool Create() { 
-        
-        
+        public bool Create() {
+            CADProduct c = new CADProduct();
+            return c.Create(this);
         }
 
 
-        public bool Update() { 
-        
-        
-        
+        public bool Update() {
+            CADProduct c = new CADProduct();
+            return c.Update(this);  
         }
  
-        public bool Delete() { 
-        
-        
-        
+        public bool Delete() {
+            CADProduct c = new CADProduct();
+            return c.Delete(this);
         }
 
-        public bool Read() { 
-        
-        
-        
+        public bool Read() {
+            CADProduct c = new CADProduct();
+            return c.Read(this);    
         }
 
 
         public bool ReadFirst() { 
-        
-        
+           
         
         }
 
