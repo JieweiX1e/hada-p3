@@ -37,8 +37,36 @@ namespace library
 
         }
 
-        public bool Update(ENProduct en) { 
-        
+        public bool Update(ENProduct en) {
+            bool changed = false;
+
+            SqlConnection con = null;
+            string ins = "UPDATE Products SET " 
+               + "name = " + en.Name + ", "
+               + "amount = " + en.Amount + ", "
+               + "price = " + en.Price + ", "
+               + "category = " + en.Category + ", "
+               + "creationDate = " + en.CreationDate + ", "
+                + "WHERE code = " + en.Code;
+
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(ins, con);
+                cmd.ExecuteNonQuery();
+                changed = true;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Error in when trying to execute Update: " + ex.Message);
+                return false;
+            }
+            finally {
+                if (con != null) con.Close();
+            }
+
+
+            return changed;
         }
 
         public bool Delete(ENProduct en) { 
