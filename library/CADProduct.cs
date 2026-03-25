@@ -23,6 +23,7 @@ namespace library
                     + en.CreationDate + ")";
             try
             {
+                con = new SqlConnection(constring);
                 con.Open();
                 SqlCommand cmd = new SqlCommand(ins, con);
                 cmd.ExecuteNonQuery();
@@ -51,6 +52,7 @@ namespace library
 
             try
             {
+                con = new SqlConnection(constring);
                 con.Open();
                 SqlCommand cmd = new SqlCommand(ins, con);
                 cmd.ExecuteNonQuery();
@@ -78,6 +80,7 @@ namespace library
 
             try
             {
+                con = new SqlConnection(constring);
                 con.Open();
                 SqlCommand cmd = new SqlCommand(ins, con);
                 cmd.ExecuteNonQuery();
@@ -102,14 +105,27 @@ namespace library
 
             SqlConnection con = null;
             string ins = "SELECT * FROM Products "
-                + "WHERE code = " + en.Code;
+                + "WHERE code = " + "'" + en.Code + "'";
 
             try
             {
+                con = new SqlConnection(constring);
                 con.Open();
                 SqlCommand cmd = new SqlCommand(ins, con);
-                cmd.ExecuteNonQuery();
-                found = true;
+                
+                SqlDataReader r = cmd.ExecuteReader();
+
+                if (r.Read()) {
+
+                    en.Name = r["name"].ToString();
+                    en.Amount = Convert.ToInt32(r["amount"]);
+                    en.Price = Convert.ToSingle(r["price"]);
+                    en.Category = Convert.ToInt32(r["category"]);
+                    en.CreationDate = Convert.ToDateTime(r["date"]);
+
+                    found = true;
+                
+                }
             }
             catch (SqlException ex)
             {

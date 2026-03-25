@@ -8,5 +8,10 @@ namespace library
 {
     public class ENCategory
     {
+        private string _category;
+
+        public ENCategory() { }
+
+        public string Category { get { return _category; } }
     }
 }
