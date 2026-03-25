@@ -8,20 +8,27 @@
             Code    
             <asp:TextBox ContentPlaceHolderID="cph1" ID="TB_Code" runat="server">
             </asp:TextBox>
-            <asp:RegularExpressionValidator ID="CodeValidator" 
+            <asp:RequiredFieldValidator ID="CodeValidator1"
+                                        runat="server"
+                                        ControlToValidate="TB_Code"
+                                        ErrorMessage="Enter a code"
+                                        ForeColor="Red"
+                                        ValidationGroup="Ess"
+                                        Display="Static"/>
+            <asp:RegularExpressionValidator ID="CodeValidator2" 
                                             runat="server" 
                                             ControlToValidate="TB_Code" 
                                             ErrorMessage="Enter a valid code"
                                             ForeColor="Red"
                                             Display="Static"
-                                            ValidationGroup="formGroup"
+                                            ValidationGroup="Essential"
                                             ValidationExpression="^([\S\s]{1,16})" />
         </p>
         <p>
             Name    
             <asp:TextBox ContentPlaceHolderID="cph1" ID="TB_Name" runat="server">
             </asp:TextBox>
-            <asp:RegularExpressionValidator ID="RequiredFieldValidator1" 
+            <asp:RegularExpressionValidator ID="RegExValidator1" 
                             runat="server" 
                             ControlToValidate="TB_Name" 
                             ErrorMessage="Enter a valid name"
@@ -70,21 +77,23 @@
         </p>
         <p>
             Creation date  
-            <asp:TextBox ContentPlaceHolderID="cph1" ID="Date" runat="server">
+            <asp:TextBox ContentPlaceHolderID="cph1" ID="TB_Date" runat="server">
             </asp:TextBox>
             <asp:CustomValidator ID="DateValidator"
-                                 ControlToValidate="Date"
+                                 ControlToValidate="TB_Date"
+                                 OnServerValidate="Date_ServerValidate"
+                                 ErrorMessage="Somewhere over the rainbow, way up high"
                                  runat="server"/>
         </p>
     </div>
     <div style="width:100%;
                 padding:10px;">
-        <asp:Button ContentPlaceHolderID="buttons" Text="Create" Width="13%" runat="server" />
-        <asp:Button ContentPlaceHolderID="buttons" Text="Update" Width="13%" runat="server" />
-        <asp:Button ContentPlaceHolderID="buttons" Text="Delete" Width="13%" runat="server" />
-        <asp:Button ContentPlaceHolderID="buttons" Text="Read" Width="13%" runat="server" />
-        <asp:Button ContentPlaceHolderID="buttons" Text="Read First" Width="13%" runat="server" />
-        <asp:Button ContentPlaceHolderID="buttons" Text="Read Prev" Width="13%" runat="server" />
-        <asp:Button ContentPlaceHolderID="buttons" Text="Read Next" Width="13%" runat="server" />
+        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="Create" Text="Create" onClick="CreateButton_onClick" />
+        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="Update" Text="Update" />
+        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="Delete" Text="Delete" />
+        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="Read" Text="Read" />
+        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="Read1" Text="Read First" />
+        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="ReadP" Text="Read Prev" />
+        <asp:Button ContentPlaceHolderID="buttons" Width="13%" runat="server" ID="ReadN" Text="Read Next" />
     </div>
 </asp:Content>
