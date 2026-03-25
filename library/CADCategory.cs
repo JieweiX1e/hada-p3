@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace library
 {
-    public class CADCategory
+    internal class CADCategory
     {
 
         private string constring;
@@ -22,16 +22,17 @@ namespace library
             bool found = false;
 
             SqlConnection con = null;
-            string ins = "SELECT category FROM Products "
-                + "WHERE category = " + en.Category;
+            string ins = "SELECT name FROM Categories WHERE name=@category";
 
             try
             {
                 con = new SqlConnection(constring);
                 con.Open();
                 SqlCommand cmd = new SqlCommand(ins, con);
-                cmd.ExecuteNonQuery();
-                found = true;
+                cmd.Parameters.AddWithValue("@category", en.Name);
+                SqlDataReader r = cmd.ExecuteReader();
+
+                if (r.Read()) found = true;
             }
             catch (SqlException ex)
             {
@@ -48,8 +49,36 @@ namespace library
         }
 
         public List<ENCategory> readAll() {
-        
-               
+            List<ENCategory> l = new List<ENCategory>();
+            SqlConnection con = null;
+            string ins = "SELECT DISTINCT name FROM Categories";
+
+            try
+            {
+                con = new SqlConnection(constring);
+                con.Open();
+                SqlCommand cmd = new SqlCommand(ins, con);
+                SqlDataReader r = cmd.ExecuteReader();
+
+                while (r.Read()) {
+                    ENCategory a = new ENCategory();
+                    a.Name = r["name"].ToString();
+                    l.Add(a);
+                }
+                
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Error when trying to Read: " + ex.Message);
+                return l;
+            }
+            finally
+            {
+                if (con != null) con.Close();
+            }
+
+
+            return l;
         }
     }
 }
