@@ -29,7 +29,7 @@ namespace library
                 created = true;
             }
             catch (SqlException ex) {
-                Console.WriteLine("Error in when trying to execute Create: " + ex.Message);
+                Console.WriteLine("Error when trying to execute Create: " + ex.Message);
                 return false;
             }
 
@@ -58,7 +58,7 @@ namespace library
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Error in when trying to execute Update: " + ex.Message);
+                Console.WriteLine("Error when trying to execute Update: " + ex.Message);
                 return false;
             }
             finally {
@@ -69,13 +69,61 @@ namespace library
             return changed;
         }
 
-        public bool Delete(ENProduct en) { 
-        
+        public bool Delete(ENProduct en) {
+            bool deleted = false;
+
+            SqlConnection con = null;
+            string ins = "DELETE FROM Products "
+                + "WHERE code = " + en.Code;
+
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(ins, con);
+                cmd.ExecuteNonQuery();
+                deleted = true;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Error when trying to Delete: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (con != null) con.Close();
+            }
+
+
+            return deleted;
         }
 
-        public bool Read(ENProduct en) { 
-        
-        
+        public bool Read(ENProduct en) {
+            bool found = false;
+
+            SqlConnection con = null;
+            string ins = "SELECT * FROM Products "
+                + "WHERE code = " + en.Code;
+
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(ins, con);
+                cmd.ExecuteNonQuery();
+                found = true;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Error when trying to Read: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (con != null) con.Close();
+            }
+
+
+            return found;
+
         }
 
         public bool ReadFirst(ENProduct en) { 
