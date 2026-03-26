@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace library
 {
@@ -14,7 +16,7 @@ namespace library
         private string constring;
 
         public CADCategory() {
-            constring = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database.mdf;Integrated Security=True";
+            constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
         }
 
 
