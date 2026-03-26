@@ -49,6 +49,15 @@ namespace ProWeb {
         protected global::System.Web.UI.WebControls.TextBox TB_Name;
 
         /// <summary>
+        /// Control RFV_Name.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFV_Name;
+
+        /// <summary>
         /// Control RegExValidator1.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace ProWeb {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TB_Amount;
+
+        /// <summary>
+        /// Control RFV_Amount.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFV_Amount;
 
         /// <summary>
         /// Control Range1.
@@ -103,6 +121,15 @@ namespace ProWeb {
         protected global::System.Web.UI.WebControls.RangeValidator RangeValidator1;
 
         /// <summary>
+        /// Control RFV_Price.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFV_Price;
+
+        /// <summary>
         /// Control TB_Date.
         /// </summary>
         /// <remarks>
@@ -119,6 +146,15 @@ namespace ProWeb {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator DateValidator;
+
+        /// <summary>
+        /// Control RFV_Date.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFV_Date;
 
         /// <summary>
         /// Control Create.

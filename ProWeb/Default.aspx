@@ -13,6 +13,7 @@
                                         ControlToValidate="TB_Code"
                                         ErrorMessage="Enter a code"
                                         ForeColor="Red"
+                                        ValidationGroup="Read"
                                         Display="Static"/>
             <asp:RegularExpressionValidator ID="CodeValidator2" 
                                             runat="server" 
@@ -20,16 +21,25 @@
                                             ErrorMessage="Enter a valid code"
                                             ForeColor="Red"
                                             Display="Static"
+                                            ValidationGroup="Read"
                                             ValidationExpression="^([\S\s]{1,16})" />
         </p>
         <p>
             Name    
             <asp:TextBox ContentPlaceHolderID="cph1" ID="TB_Name" runat="server">
             </asp:TextBox>
+            <asp:RequiredFieldValidator ID="RFV_Name"
+                            runat="server"
+                            ControlToValidate="TB_Name"
+                            ErrorMessage="Name must not be null for this operation"
+                            ForeColor="Red"
+                            ValidationGroup="Write"
+                            Display="Static"/>
             <asp:RegularExpressionValidator ID="RegExValidator1" 
                             runat="server" 
                             ControlToValidate="TB_Name" 
                             ErrorMessage="Enter a valid name"
+                            ValidationGroup="Write"
                             Display="Static"
                             ForeColor="Red"
                             ValidationExpression="^([\S\s]{0,32})"/>
@@ -38,6 +48,13 @@
             Amount  
             <asp:TextBox ContentPlaceHolderID="cph1" ID="TB_Amount" runat="server">
             </asp:TextBox>
+            <asp:RequiredFieldValidator ID="RFV_Amount"
+                            runat="server"
+                            ControlToValidate="TB_Amount"
+                            ErrorMessage="Amount must not be null for this operation."
+                            ValidationGroup="Write"            
+                            ForeColor="Red"
+                            Display="Static"/>
             <asp:RangeValidator id="Range1"
                                 ControlToValidate="TB_Amount"
                                 MinimumValue="0"
@@ -45,6 +62,7 @@
                                 Type="Integer"
                                 ForeColor="Red"
                                 EnableClientScript="false"
+                                ValidationGroup="Write"
                                 Text="The value must be from 0 to 9999"
                                 runat="server"/>
         </p>
@@ -69,8 +87,16 @@
                     Type="Currency"
                     EnableClientScript="false"
                     ForeColor="Red"
+                    ValidationGroup="Write"
                     Text="The value must be from 0.00 to 9999.99"
                     runat="server"/>
+            <asp:RequiredFieldValidator ID="RFV_Price"
+                runat="server"
+                ControlToValidate="TB_Price"
+                ErrorMessage="Price must not be null for this operation."
+                ForeColor="Red"
+                ValidationGroup="Write"
+                Display="Static"/>
         </p>
         <p>
             Creation date  
@@ -79,8 +105,16 @@
             <asp:CustomValidator ID="DateValidator"
                                  ControlToValidate="TB_Date"
                                  OnServerValidate="Date_ServerValidate"
-                                 ErrorMessage="Date is not on the correct "
+                                 ErrorMessage="Date is not on the correct format"
+                                 ValidationGroup="Write"
                                  runat="server"/>
+            <asp:RequiredFieldValidator ID="RFV_Date"
+                runat="server"
+                ControlToValidate="TB_Date"
+                ErrorMessage="Date must not be null for this operation."
+                ForeColor="Red"
+                ValidationGroup="Write"
+                Display="Static"/>
         </p>
     </div>
     <div style="width:100%;

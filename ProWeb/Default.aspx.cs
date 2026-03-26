@@ -105,85 +105,75 @@ namespace ProWeb {
         }
 
         protected void ReadButton_onClick(object sender, EventArgs e) {
-            if (Page.IsValid) {
-                try {
-                    string code = TB_Code.Text.Trim();
+            Page.Validate("Read");
+            try {
+                string code = TB_Code.Text.Trim();
                     
-                    ENProduct en = new ENProduct(code, "", -1, -1, -1, DateTime.MinValue);
-                    if (en.Read()) {
+                ENProduct en = new ENProduct(code, "", -1, -1, -1, DateTime.MinValue);
+                if (en.Read()) {
 
-                        TB_Code.Text = en.Code;
-                        TB_Name.Text = en.Name;
-                        TB_Amount.Text = en.Amount.ToString();
-                        TB_Price.Text = en.Price.ToString();
-                        DDL_Category.SelectedIndex = en.Category - 1; //For dealing with the offset
-                        TB_Date.Text = en.CreationDate.ToString();
-                    }
+                    TB_Code.Text = en.Code;
+                    TB_Name.Text = en.Name;
+                    TB_Amount.Text = en.Amount.ToString();
+                    TB_Price.Text = en.Price.ToString();
+                    DDL_Category.SelectedIndex = en.Category - 1; //For dealing with the offset
+                    TB_Date.Text = en.CreationDate.ToString();
                 }
-                catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
             }
-            return;
+            catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
         }
 
         protected void ReadFirstButton_onClick(object sender, EventArgs e) {
-            if (Page.IsValid) {
-                try {
-                    string code = TB_Code.Text.Trim();
-                    ENProduct en = new ENProduct(code, "", -1, -1, -1, DateTime.MinValue);
-                    if (en.ReadFirst()) {
+            try {
+                ENProduct en = new ENProduct("", "", -1, -1, -1, DateTime.MinValue);
+                if (en.ReadFirst()) {
 
-                        TB_Code.Text = en.Code;
-                        TB_Name.Text = en.Name;
-                        TB_Amount.Text = en.Amount.ToString();
-                        TB_Price.Text = en.Price.ToString();
-                        DDL_Category.SelectedIndex = en.Category - 1; //For dealing with the offset
-                        TB_Date.Text = en.CreationDate.ToString();
-                    }
+                    TB_Code.Text = en.Code;
+                    TB_Name.Text = en.Name;
+                    TB_Amount.Text = en.Amount.ToString();
+                    TB_Price.Text = en.Price.ToString();
+                    DDL_Category.SelectedIndex = en.Category - 1; //For dealing with the offset
+                    TB_Date.Text = en.CreationDate.ToString();
                 }
-                catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
             }
-            return;
+            catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
         }
 
         protected void ReadPrevButton_onClick(object sender, EventArgs e) {
-            if (Page.IsValid) {
-                try {
-                    string code = TB_Code.Text.Trim();
-                    ENProduct en = new ENProduct(code, "", -1, -1, -1, DateTime.MinValue);
+            Page.Validate("Read");
+            try {
+                string code = TB_Code.Text.Trim();
+                ENProduct en = new ENProduct(code, "", -1, -1, -1, DateTime.MinValue);
                     
-                    if (en.ReadPrev()) {
+                if (en.ReadPrev()) {
 
-                        TB_Code.Text = en.Code;
-                        TB_Name.Text = en.Name;
-                        TB_Amount.Text = en.Amount.ToString();
-                        TB_Price.Text = en.Price.ToString();
-                        DDL_Category.SelectedIndex = en.Category - 1; //For dealing with the offset
-                        TB_Date.Text = en.CreationDate.ToString();
-                    }
+                    TB_Code.Text = en.Code;
+                    TB_Name.Text = en.Name;
+                    TB_Amount.Text = en.Amount.ToString();
+                    TB_Price.Text = en.Price.ToString();
+                    DDL_Category.SelectedIndex = en.Category - 1; //For dealing with the offset
+                    TB_Date.Text = en.CreationDate.ToString();
                 }
-                catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
             }
-            return;
+            catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
         }
 
         protected void ReadNextButton_onClick(object sender, EventArgs e) {
-            if (Page.IsValid) {
-                try {
-                    string code = TB_Code.Text.Trim();
-                    ENProduct en = new ENProduct(code, "", -1, -1, -1, DateTime.MinValue);
-                    if (en.ReadNext()) {
+            Page.Validate("Read");
+            try {
+                string code = TB_Code.Text.Trim();
+                ENProduct en = new ENProduct(code, "", -1, -1, -1, DateTime.MinValue);
+                if (en.ReadNext()) {
 
-                        TB_Code.Text = en.Code;
-                        TB_Name.Text = en.Name;
-                        TB_Amount.Text = en.Amount.ToString();
-                        TB_Price.Text = en.Price.ToString();
-                        DDL_Category.SelectedIndex = en.Category - 1; //For dealing with the offset
-                        TB_Date.Text = en.CreationDate.ToString();
-                    }
+                    TB_Code.Text = en.Code;
+                    TB_Name.Text = en.Name;
+                    TB_Amount.Text = en.Amount.ToString();
+                    TB_Price.Text = en.Price.ToString();
+                    DDL_Category.SelectedIndex = en.Category - 1; //For dealing with the offset
+                    TB_Date.Text = en.CreationDate.ToString();
                 }
-                catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
             }
-            return;
+            catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
         }
     }
 }

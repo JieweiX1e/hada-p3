@@ -54,7 +54,7 @@ namespace library
             Name = name;
             Amount = amount;
             Price = price;
-            Category = category;
+            Category = category + 1;
             CreationDate = creationDate;    
         }
 
