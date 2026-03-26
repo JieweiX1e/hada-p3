@@ -82,7 +82,8 @@
             <asp:CustomValidator ID="DateValidator"
                                  ControlToValidate="TB_Date"
                                  OnServerValidate="Date_ServerValidate"
-                                 ErrorMessage="Somewhere over the rainbow, way up high"
+                                 ErrorMessage="Incorrect date"
+                                 ForeColor="Red"
                                  runat="server"/>
         </p>
     </div>
