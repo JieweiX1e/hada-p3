@@ -5,15 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using System.Configuration;
-
 namespace library
 {
     internal class CADProduct
     {
         private string constring;
         public CADProduct() {
-            constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
+            constring = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database.mdf;Integrated Security=True";
         }
       
 
@@ -76,7 +74,7 @@ namespace library
                 cmd.Parameters.AddWithValue("@amount", en.Amount);
                 cmd.Parameters.AddWithValue("@price", en.Price);
                 cmd.Parameters.AddWithValue("@category", en.Category);
-                cmd.Parameters.AddWithValue("@creationDate", en.CreationDate);
+                cmd.Parameters.AddWithValue("@date", en.CreationDate);
 
                 cmd.ExecuteNonQuery();
                 changed = true;
