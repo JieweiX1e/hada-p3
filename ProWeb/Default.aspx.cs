@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using library;
 
 namespace ProWeb {
     public partial class WebForm1 : System.Web.UI.Page {
@@ -41,6 +40,7 @@ namespace ProWeb {
                 } 
                 catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
             }
+            return;
         }
 
         protected void UpdateButton_onClick(object sender, EventArgs e) {
@@ -58,6 +58,7 @@ namespace ProWeb {
                 }
                 catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
             }
+            return;
         }
 
         protected void DeleteButton_onClick(object sender, EventArgs e) {
