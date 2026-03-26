@@ -331,6 +331,8 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
+*.mdf
+
 # OpenCover UI analysis results
 OpenCover/
 
@@ -360,3 +362,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/ProWeb/App_Data/Database.mdf

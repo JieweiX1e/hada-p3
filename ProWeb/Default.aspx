@@ -13,7 +13,6 @@
                                         ControlToValidate="TB_Code"
                                         ErrorMessage="Enter a code"
                                         ForeColor="Red"
-                                        ValidationGroup="Ess"
                                         Display="Static"/>
             <asp:RegularExpressionValidator ID="CodeValidator2" 
                                             runat="server" 
@@ -21,7 +20,6 @@
                                             ErrorMessage="Enter a valid code"
                                             ForeColor="Red"
                                             Display="Static"
-                                            ValidationGroup="Essential"
                                             ValidationExpression="^([\S\s]{1,16})" />
         </p>
         <p>
@@ -34,7 +32,6 @@
                             ErrorMessage="Enter a valid name"
                             Display="Static"
                             ForeColor="Red"
-                            ValidationGroup="formGroup"
                             ValidationExpression="^([\S\s]{0,32})"/>
         </p>
         <p>
@@ -82,7 +79,7 @@
             <asp:CustomValidator ID="DateValidator"
                                  ControlToValidate="TB_Date"
                                  OnServerValidate="Date_ServerValidate"
-                                 ErrorMessage="Somewhere over the rainbow, way up high"
+                                 ErrorMessage="Date is not on the correct "
                                  runat="server"/>
         </p>
     </div>

@@ -36,8 +36,16 @@ namespace ProWeb {
                     int category = int.Parse(DDL_Category.SelectedValue);
                     DateTime creationDate;
                     DateTime.TryParseExact(TB_Date.Text.Trim(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.AllowWhiteSpaces, out creationDate);
+                    
                     ENProduct en = new ENProduct(code, name, amount, price, category, creationDate);
                     en.Create();
+
+                    TB_Code.Text = "";
+                    TB_Name.Text = "";
+                    TB_Amount.Text = "";
+                    TB_Price.Text = "";
+                    DDL_Category.SelectedIndex = 0;
+                    TB_Date.Text = "";
                 } 
                 catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
             }
@@ -54,8 +62,16 @@ namespace ProWeb {
                     int category = int.Parse(DDL_Category.SelectedValue);
                     DateTime creationDate;
                     DateTime.TryParseExact(TB_Date.Text.Trim(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.AllowWhiteSpaces, out creationDate);
+                    
                     ENProduct en = new ENProduct(code, name, amount, price, category, creationDate);
                     en.Update();
+
+                    TB_Code.Text = "";
+                    TB_Name.Text = "";
+                    TB_Amount.Text = "";
+                    TB_Price.Text = "";
+                    DDL_Category.SelectedIndex = 0;
+                    TB_Date.Text = "";
                 }
                 catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
             }
@@ -72,8 +88,16 @@ namespace ProWeb {
                     int category = int.Parse(DDL_Category.SelectedValue);
                     DateTime creationDate;
                     DateTime.TryParseExact(TB_Date.Text.Trim(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.AllowWhiteSpaces, out creationDate);
+                    
                     ENProduct en = new ENProduct(code, name, amount, price, category, creationDate);
                     en.Delete();
+
+                    TB_Code.Text = "";
+                    TB_Name.Text = "";
+                    TB_Amount.Text = "";
+                    TB_Price.Text = "";
+                    DDL_Category.SelectedIndex = 0;
+                    TB_Date.Text = "";
                 }
                 catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
             }
@@ -84,8 +108,17 @@ namespace ProWeb {
             if (Page.IsValid) {
                 try {
                     string code = TB_Code.Text.Trim();
+                    
                     ENProduct en = new ENProduct(code, "", -1, -1, -1, DateTime.MinValue);
-                    en.Read();
+                    if (en.Read()) {
+
+                        TB_Code.Text = en.Code;
+                        TB_Name.Text = en.Name;
+                        TB_Amount.Text = en.Amount.ToString();
+                        TB_Price.Text = en.Price.ToString();
+                        DDL_Category.SelectedIndex = en.Category - 1; //For dealing with the offset
+                        TB_Date.Text = en.CreationDate.ToString();
+                    }
                 }
                 catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
             }
@@ -97,7 +130,15 @@ namespace ProWeb {
                 try {
                     string code = TB_Code.Text.Trim();
                     ENProduct en = new ENProduct(code, "", -1, -1, -1, DateTime.MinValue);
-                    en.ReadFirst();
+                    if (en.ReadFirst()) {
+
+                        TB_Code.Text = en.Code;
+                        TB_Name.Text = en.Name;
+                        TB_Amount.Text = en.Amount.ToString();
+                        TB_Price.Text = en.Price.ToString();
+                        DDL_Category.SelectedIndex = en.Category - 1; //For dealing with the offset
+                        TB_Date.Text = en.CreationDate.ToString();
+                    }
                 }
                 catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
             }
@@ -109,7 +150,16 @@ namespace ProWeb {
                 try {
                     string code = TB_Code.Text.Trim();
                     ENProduct en = new ENProduct(code, "", -1, -1, -1, DateTime.MinValue);
-                    en.ReadPrev();
+                    
+                    if (en.ReadPrev()) {
+
+                        TB_Code.Text = en.Code;
+                        TB_Name.Text = en.Name;
+                        TB_Amount.Text = en.Amount.ToString();
+                        TB_Price.Text = en.Price.ToString();
+                        DDL_Category.SelectedIndex = en.Category - 1; //For dealing with the offset
+                        TB_Date.Text = en.CreationDate.ToString();
+                    }
                 }
                 catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
             }
@@ -121,7 +171,15 @@ namespace ProWeb {
                 try {
                     string code = TB_Code.Text.Trim();
                     ENProduct en = new ENProduct(code, "", -1, -1, -1, DateTime.MinValue);
-                    en.Read();
+                    if (en.ReadNext()) {
+
+                        TB_Code.Text = en.Code;
+                        TB_Name.Text = en.Name;
+                        TB_Amount.Text = en.Amount.ToString();
+                        TB_Price.Text = en.Price.ToString();
+                        DDL_Category.SelectedIndex = en.Category - 1; //For dealing with the offset
+                        TB_Date.Text = en.CreationDate.ToString();
+                    }
                 }
                 catch (Exception ex) { Console.WriteLine("User operation has failed. Error: {0}", ex.Message); }
             }
