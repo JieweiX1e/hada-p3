@@ -75,7 +75,7 @@ namespace library
                 cmd.Parameters.AddWithValue("@amount", en.Amount);
                 cmd.Parameters.AddWithValue("@price", en.Price);
                 cmd.Parameters.AddWithValue("@category", en.Category);
-                cmd.Parameters.AddWithValue("@date", en.CreationDate);
+                cmd.Parameters.AddWithValue("@creationDate", en.CreationDate);
 
                 cmd.ExecuteNonQuery();
                 changed = true;

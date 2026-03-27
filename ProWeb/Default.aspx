@@ -70,10 +70,6 @@
             Category
             <asp:DropDownList id="DDL_Category" 
                               runat="server">
-                <asp:ListItem Selected="True" Value=0> Computing </asp:ListItem>
-                <asp:ListItem Value=1> Telephony </asp:ListItem>
-                <asp:ListItem Value=2> Gaming </asp:ListItem>
-                <asp:ListItem Value=3> Home appliances </asp:ListItem>
             </asp:DropDownList>
         </p>
         <p>
